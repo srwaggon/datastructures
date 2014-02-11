@@ -30,25 +30,22 @@ public class Merge {
 
     List<T> result = new ArrayList<T>();
 
-    while (left.size() > 0 || right.size() > 0) {
-      result.add(nextAndRemove(left, right));
+    int i = 0, j = 0;
+    while (i < left.size() || j < right.size()) {
+      
+      if (i >= left.size()) {
+        result.add(right.get(j++));
+      } else if (j >= right.size()) {
+        result.add(left.get(i++));
+      } else {
+
+      final T next = comesBefore(left.get(0), right.get(0)) ? left.get(i++)
+          : right.get(j++);
+
+      result.add(next);
+      }
     }
     return result;
-  }
-
-  public static <T extends Comparable> T nextAndRemove(List<T> left,
-      List<T> right) {
-
-    if (left.size() <= 0) {
-      return right.remove(0);
-    }
-
-    if (right.size() <= 0) {
-      return left.remove(0);
-    }
-
-    return comesBefore(left.get(0), right.get(0)) ? left.remove(0) : right
-        .remove(0);
   }
 
   protected static <T extends Comparable> boolean comesBefore(T elm1, T elm2) {
