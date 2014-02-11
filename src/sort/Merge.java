@@ -11,18 +11,14 @@ public class Merge {
 
   protected static <T extends Comparable> List<T> mergeSplit(List<T> data) {
 
-    final int size = data.size();
-
-    if (size < 2) {
-
+    if (data.size() < 2) {
       return data;
 
     } else {
 
-      int runLength = size / 2;
-
+      int runLength = data.size() / 2;
       List<T> left = mergeSplit(data.subList(0, runLength));
-      List<T> right = mergeSplit(data.subList(runLength, size));
+      List<T> right = mergeSplit(data.subList(runLength, data.size()));
 
       return merge(left, right);
     }
@@ -31,6 +27,7 @@ public class Merge {
 
   protected static <T extends Comparable> List<T> merge(List<T> left,
       List<T> right) {
+
     List<T> result = new ArrayList<T>();
 
     while (left.size() > 0 || right.size() > 0) {
