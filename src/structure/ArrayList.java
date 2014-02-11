@@ -1,4 +1,4 @@
-package util;
+package structure;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -87,11 +87,6 @@ public class ArrayList<T> implements List<T> {
   }
 
   @Override
-  public int indexOf(Object o) {
-    return 0;
-  }
-
-  @Override
   public boolean isEmpty() {
     return false;
   }
@@ -118,7 +113,7 @@ public class ArrayList<T> implements List<T> {
 
   @Override
   public boolean remove(Object o) {
-    int index = find(o);
+    int index = indexOf(o);
 
     if (index == -1) {
       return false;
@@ -129,7 +124,8 @@ public class ArrayList<T> implements List<T> {
     return true;
   }
 
-  private int find(Object o) {
+  @Override
+  public int indexOf(Object o) {
     for (int i = 0; i < size(); i++) {
       if (elements[i].equals(o)) {
         return i;
