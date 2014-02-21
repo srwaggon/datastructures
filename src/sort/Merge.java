@@ -39,10 +39,10 @@ public class Merge {
         result.add(left.get(i++));
       } else {
 
-      final T next = comesBefore(left.get(0), right.get(0)) ? left.get(i++)
+        final T next = comesBefore(left.get(i), right.get(j)) ? left.get(i++)
           : right.get(j++);
 
-      result.add(next);
+        result.add(next);
       }
     }
     return result;
