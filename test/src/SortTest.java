@@ -14,7 +14,8 @@ public class SortTest {
 
   @Before
   public void setup() {
-    data.addAll(Arrays.asList(new Integer[] { 2, 3, 0, 1, }));
+    data.addAll(Arrays
+        .asList(new Integer[] { 2, 3, 0, 1, 14, 16, 2902, 1, 40 }));
   }
 
   @Test
